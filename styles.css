@@ -1,0 +1,47 @@
+html, body {
+    margin: 0;
+    font-family: 'Source Code Pro', monospace;
+}
+
+body {
+
+    background-image: url("/image/iss_back.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-align: center
+}
+
+
+#issPosition {
+    text-align: center
+}
+
+
+#map {
+    height: 600px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 30px 8px #FFFFFF;
+}
+
+.background {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
