@@ -30,6 +30,22 @@ h1 {
 }
 
 
+#austronautes {
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1;
+ }
+#austronautes img {
+    position: absolute;
+    top: 0px;
+    right: 100px;
+    width: 200px;
+}
+
+#austronautes:hover {opacity: 0.7;}
+
+
 #map {
     height: 600px;
     width: 900px;

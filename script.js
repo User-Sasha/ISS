@@ -29,8 +29,6 @@ let myIcon = L.icon({
 let marker = L.marker([48.85808672815468, 2.2948842885382748], {icon: myIcon});
 marker.addTo(map);
 marker.dragging.disable();
-marker.bindTooltip("my tooltip text").openTooltip();
-
 
 /*
  *  Recuperation des données
@@ -48,18 +46,43 @@ setInterval(
             map.panTo([latitude, longitude]);
             marker.setLatLng([latitude, longitude]);
         })
-/*
+
         $.ajax({
             url: "http://api.open-notify.org/astros.json",
             method: "GET",
         }).done((donnees) => {
-            let people = donnees.people;
-            for (let i = 0; i <people.length; i++) {
-                $("#issPeople").text(people[i].craft);
+            let peopleInSpace = donnees.people;
+            let peopleInISS = [];
+            for (let i = 0; i <peopleInSpace.length; i++) {
+                //$("#issPeople").text(people[i].craft);
+                if (peopleInSpace[i].craft === 'ISS'){
+                    peopleInISS.push(peopleInSpace[i].name);
+                }
             }
+
+            let string = peopleInISS.toString()
+            let inside = string.replaceAll(',', '</br>')
+            let personnePresente = "Les personnes présentes dans l'iss actuellement sont : </br>" + inside
+            console.log(personnePresente);
+            marker.bindTooltip(personnePresente).openTooltip();
+           //marker.bindTooltip(peopleInISS.toString()).openTooltip();
+
         })
-*/
+
     }, 1000);
+
+/*
+ *feature
+ *
+ * moov image astro + popup nom iss
+ * modal
+ *http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/howto/howto_css_modal_images.asp.html#gsc.tab=0
+ * https://stackoverflow.com/questions/36900540/moving-an-image-with-javascript-onclick
+ *
+ */
+
+
+
 
 
 /*
