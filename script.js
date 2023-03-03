@@ -6,7 +6,7 @@ let vitesse = 0;
 let latitude = 48.85808672815468;
 let longitude = 2.2948842885382748;
 let textNaute = $("#textNaute");
-let astronaute = $("#austronautes");
+let astronaute = $("#astronautes");
 
 /*
  *  Initalisation de la map
