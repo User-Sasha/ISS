@@ -52,8 +52,6 @@ setInterval(
             $("#issPosition").text("Latitude = "+latitude + " | " + "Longitude = " + longitude);
             map.panTo([latitude, longitude]);
             marker.setLatLng([latitude, longitude]);
-            //marker.bindTooltip(personnePresente).openTooltip();
-            //marker.bindTooltip(peopleInISS.toString()).openTooltip();
         })
 
 
@@ -72,7 +70,7 @@ $.ajax({
     vitesse = donnees.velocity;
     map.panTo([latitude, longitude]);
     marker.setLatLng([latitude, longitude]);
-    infos = "-Vaisseau : "+nom +"</br>-l'altitude est de : "+altitude + "</br>-la vitesse est de : "+vitesse+" km/h";
+    infos = "-Vaisseau : "+nom +"</br>-l'altitude est de : "+altitude + " km</br>-la vitesse est de : "+vitesse+" km/h";
     marker.bindTooltip(infos, {
         interactive: true,
         permanent: false});
