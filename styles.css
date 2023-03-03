@@ -54,19 +54,55 @@ h1 {
     box-shadow: 0 0 30px 8px #FFFFFF;
 }
 
-#textNaute {
-    position: absolute;
-    top: 0px;
-    right: 100px;
-    width: 200px;
+.naute {
+    overflow: hidden;
+    position: relative;
+    /* Apply animation to this element */
+    -moz-animation: naute 5s linear infinite alternate;
+    -webkit-animation: naute 5s linear infinite alternate;
+    animation: naute 5s linear infinite alternate;
+   /* animation: MarqueeLeft linear 18s infinite;*/
 }
 
-.text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Move it (define the animation) */
+@-moz-keyframes naute {
+    0%   { -moz-transform: translateY(30%); }
+    100% { -moz-transform: translateY(0%); }
 }
+@-webkit-keyframes naute {
+    0%   { -webkit-transform: translateY(30%); }
+    100% { -webkit-transform: translateY(0%); }
+}
+@keyframes naute {
+    0%   {
+        -moz-transform: translateY(30%); /* Firefox bug fix */
+        -webkit-transform: translateY(30%); /* Firefox bug fix */
+        transform: translateY(30%);
+    }
+    100% {
+        -moz-transform: translateY(0%); /* Firefox bug fix */
+        -webkit-transform: translateY(0%); /* Firefox bug fix */
+        transform: translateY(0%);
+    }
+}
+
+/*
+@keyframes MarqueeLeft
+{
+    0% { right: -100% }
+    100% { right: 100% }
+}*/
+
+#textNaute {
+    position: absolute;
+    top: 400px;
+    right: 100px;
+    width: 300px;
+    z-index: 2;
+    color: #FFFFFF;
+}
+
+
 
 .background {
     position: absolute;

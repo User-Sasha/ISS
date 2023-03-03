@@ -36,8 +36,9 @@ let marker = L.marker([48.85808672815468, 2.2948842885382748], {icon: myIcon});
 marker.addTo(map);
 marker.dragging.disable();
 
+
 /*
- *  Recuperation des données
+ *  Recuperation et affichage de la latitude et longtiude
  */
 setInterval(
 
@@ -59,7 +60,9 @@ setInterval(
     }, 1000);
 
 
-//Recupération des infos de l'iss
+/*
+ *Recupération et affichage des infos de l'iss
+ */
 $.ajax({
     url: "https://api.wheretheiss.at/v1/satellites/25544",
     method: "GET",
@@ -70,14 +73,13 @@ $.ajax({
     map.panTo([latitude, longitude]);
     marker.setLatLng([latitude, longitude]);
     infos = "-Vaisseau : "+nom +"</br>-l'altitude est de : "+altitude + "</br>-la vitesse est de : "+vitesse+" km/h";
-
     marker.bindTooltip(infos, {
         interactive: true,
         permanent: false});
 })
 
 
-
+//affichage du text de naute
 function hideText() {
     if (textNaute) {
         for (var x = 0; x < textNaute.length; x++) {
@@ -85,12 +87,10 @@ function hideText() {
         }
     }
 };
-
 function showText(){
     if (textNaute) {
-        for (var x = 0; x < textNaute.length; x++) {
-            textNaute[x].style.visibility = "visible";
-        }
+        textNaute[0].style.visibility = "visible";
+
     }
 }
 
@@ -107,35 +107,20 @@ function textPopup() {
             }
         }
 
-            console.log(astronaute);
-            astronaute[0].click(() => {
-                textNaute[0].style.visibility === 'visible' ? hideText() : showText();
-            })
 
 
-        /*
         let string = peopleInISS.toString()
-        let inside = string.replaceAll(',', '\n')
-        let personnePresente = "Bonjour, je suis naute, \nLes personnes présentes dans l'iss actuellement sont : \n" + inside + "\n>" + "Naute";
-        $("#austronautes").text(personnePresente);
+        //let inside = string.replaceAll(',', ' \n')
+        let personnePresente = `Bonjour, je suis naute, les personnes présentes dans l'iss actuellement sont : ${string} et Naute`;
+        textNaute.text(personnePresente);
         console.log(personnePresente);
-        */
+
     })
 }
 
-/*
- *feature
- *
- * moov image astro + popup nom iss
- * modal
- *http://www-db.deis.unibo.it/courses/TW/DOCS/w3schools/howto/howto_css_modal_images.asp.html#gsc.tab=0
- * https://stackoverflow.com/questions/36900540/moving-an-image-with-javascript-onclick
- *
- */
-
-
-
-
+astronaute[0].addEventListener('click', () => {
+    textNaute[0].style.visibility === 'visible' ? hideText() : showText();
+})
 
 
 /*
