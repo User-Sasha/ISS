@@ -11,15 +11,12 @@ let astronaute = $("#austronautes");
 /*
  *  Initalisation de la map
  */
-let map = L.map('map')
-    .setView([latitude, longitude], 10,);
-map.attributionControl=false;
-map.zoomControl=false;
+let map = L.map('map').setView([latitude, longitude], 10,);
 
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}\'', {
     maxZoom: 5,
-    minZoom: 5,
-    attribution: '&copy; <a href="http://www.eni-ecole.fr">ENI ECOLE</a>'
+    minZoom: 2,
+    attribution: '&copy; <a href="https://github.com/User-Sasha">sh</a>'
 }).addTo(map);
 
 /*
@@ -78,20 +75,6 @@ $.ajax({
 
 
 //affichage du text de naute
-function hideText() {
-    if (textNaute) {
-        for (var x = 0; x < textNaute.length; x++) {
-            textNaute[x].style.visibility = "hidden";
-        }
-    }
-};
-function showText(){
-    if (textNaute) {
-        textNaute[0].style.visibility = "visible";
-
-    }
-}
-
 function textPopup() {
     $.ajax({
         url: "http://api.open-notify.org/astros.json",
@@ -106,18 +89,15 @@ function textPopup() {
         }
 
 
-
         let string = peopleInISS.toString()
         //let inside = string.replaceAll(',', ' \n')
-        let personnePresente = `Bonjour, je suis naute, les personnes présentes dans l'iss actuellement sont : ${string} et Naute`;
+        let personnePresente = `Bonjour, je suis naute, les personnes présentes dans l'iss actuellement sont : ${string} et moi`;
         textNaute.text(personnePresente);
-        console.log(personnePresente);
-
     })
 }
 
 astronaute[0].addEventListener('click', () => {
-    textNaute[0].style.visibility === 'visible' ? hideText() : showText();
+    textNaute[0].style.visibility === 'visible' ? textNaute[0].style.visibility = "hidden" : textNaute[0].style.visibility = "visible";
 })
 
 
@@ -132,6 +112,5 @@ window.onload = function () {
         color: ['#FFFFFF'],
         maxParticles: 1000,
         speed: 0.1
-        //responsive: true
     });
 };

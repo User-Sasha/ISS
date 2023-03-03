@@ -21,12 +21,15 @@ h1 {
     font-size: 4em;
     font-weight: bold;
     margin-bottom: 0;
-    text-align: center
+    text-align: center;
+    color:#FFFFFF;
 }
 
 
 #issPosition {
-    text-align: center
+    text-align: center;
+    color:#FFFFFF;
+
 }
 
 
@@ -61,7 +64,20 @@ h1 {
     -moz-animation: naute 5s linear infinite alternate;
     -webkit-animation: naute 5s linear infinite alternate;
     animation: naute 5s linear infinite alternate;
-   /* animation: MarqueeLeft linear 18s infinite;*/
+}
+
+
+#textNaute {
+    position: absolute;
+    top: 400px;
+    right: 100px;
+    width: 300px;
+    z-index: 2;
+    color: #FFFFFF;
+    /* Apply animation to this element */
+    -moz-animation: naute 5s linear infinite alternate;
+    -webkit-animation: naute 5s linear infinite alternate;
+    animation: naute 5s linear infinite alternate;
 }
 
 /* Move it (define the animation) */
@@ -85,23 +101,6 @@ h1 {
         transform: translateY(0%);
     }
 }
-
-/*
-@keyframes MarqueeLeft
-{
-    0% { right: -100% }
-    100% { right: 100% }
-}*/
-
-#textNaute {
-    position: absolute;
-    top: 400px;
-    right: 100px;
-    width: 300px;
-    z-index: 2;
-    color: #FFFFFF;
-}
-
 
 
 .background {
