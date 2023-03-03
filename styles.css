@@ -5,7 +5,7 @@ html, body {
 
 body {
 
-    background-image: url("/image/iss_back.jpg");
+    background-image: url("image/iss_back.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
